@@ -14,14 +14,22 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path("custom", {name: "beau carnes"}) }}">Greet beau carnes</a>
-                    </li>
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="{{ path("login") }}">Login</a>#}
-{#                    </li>#}
-                </ul>
+                <div class="container-inline">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("custom", {name: "beau carnes"}) }}">Greet beau carnes</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="navbar-nav ml-auto navbar-login-logout float-right">
+{#                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}#}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="nav-link" href="{{ path("app_logout") }}">Logout</a>
+                    {% else %}
+                        <a class="nav-link" href="{{ path("app_login") }}">Login</a>
+                    {% endif %}
+                </div>
             </div>
         </nav>
 
